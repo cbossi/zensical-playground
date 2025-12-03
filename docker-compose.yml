@@ -1,0 +1,22 @@
+services:
+
+  zensical:
+    build: .
+    image: zensical
+    container_name: zensical
+    entrypoint: "zensical"
+    volumes:
+      - ./content:/workspace
+
+  zensical_serve:
+    build:
+      dockerfile: ./ZensicalServe.Dockerfile
+    image: zensical_serve
+    container_name: zensical_serve
+    ports:
+      - "8001:8001"
+    develop:
+      watch:
+        - action: sync
+          path: ./content
+          target: /workspace
