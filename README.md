@@ -2,7 +2,7 @@
 
 Provides a dockerized setup to work with zensical.
 
-## Comands
+## Commands
 
 ### Create
 
