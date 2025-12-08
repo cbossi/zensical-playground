@@ -21,7 +21,8 @@ Provides a dockerized setup to work with zensical.
 
 ### Build
 
-`docker compose run --rm zensical build`
+* with cache: `docker compose run --rm zensical build`
+* clean build: `docker compose run --rm zensical build --clean`
 
 ### Manual cleanup
 
