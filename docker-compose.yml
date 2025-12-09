@@ -1,18 +1,18 @@
 services:
 
-  zensical:
+  zensical_new:
     build: .
     image: zensical
-    container_name: zensical
-    entrypoint: "zensical"
+    container_name: zensical_new
+    command: [ "zensical", "new" ]
     volumes:
       - ./content:/workspace
 
   zensical_serve:
-    build:
-      dockerfile: ./ZensicalServe.Dockerfile
-    image: zensical_serve
+    build: .
+    image: zensical
     container_name: zensical_serve
+    command: [ "zensical", "serve", "-a", "0.0.0.0:8000" ]
     ports:
       - "8000:8000"
     # see readme for why we have to use watch instead of a volume mount
@@ -21,11 +21,22 @@ services:
         - action: sync
           path: ./content
           target: /workspace
+    post_start:
+      - command: docker compose sync zensical_serve ./content:/workspace
 
   zensical_build:
-    build:
-      dockerfile: ./ZensicalBuild.Dockerfile
-    image: zensical_build
+    build: .
+    image: zensical
     container_name: zensical_build
+    # see README for why the copy action is necessary
+    entrypoint: >
+      sh -c "
+        cp -r . /workspace-temp &&
+        cd /workspace-temp &&
+        zensical build &&
+        rm -rf /workspace/site &&
+        cp -r . /workspace &&
+        cd /workspace/site
+      "
     volumes:
       - ./content:/workspace

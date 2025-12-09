@@ -6,7 +6,7 @@ Provides a dockerized setup to work with zensical.
 
 ### Create
 
-`docker compose run --build --rm zensical new`
+`docker compose run --build --rm zensical_new`
 
 
 ### Start preview mode
@@ -17,21 +17,22 @@ Provides a dockerized setup to work with zensical.
 
 ### Stop preview mode
 * Press `Ctrl+C` to stop watch mode
-* `docker compose -p zensical-playground down --rmi all`
+* `docker compose down zensical_serve --rmi all`
 
 ### Build
 
 * with cache: `docker compose run --build --rm zensical_build`
-* clean build: `docker compose run --build --rm zensical build --clean`
+* clean build: `docker compose run --build --rm zensical_build --clean`
 
 ### Manual cleanup
 
+Should not be required, since containers should be removed automatically and the image should be rebuilt when using `--build` parameter as documented above.
+
 ```
-docker container rm zensical
-docker image rm zensical
+docker container rm zensical_new
 docker container rm zensical_serve
-docker image rm zensical_serve
- docker image rm zensical_build
+docker container rm zensical_build
+docker image rm zensical
 ```
 
 ## About the setup
