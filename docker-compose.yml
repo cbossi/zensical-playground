@@ -21,8 +21,6 @@ services:
         - action: sync
           path: ./content
           target: /workspace
-    post_start:
-      - command: docker compose sync zensical_serve ./content:/workspace
 
   zensical_build:
     build: .
