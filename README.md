@@ -1,4 +1,4 @@
-# Zeniscal Playground
+# Zensical Playground
 
 Provides a dockerized setup to work with zensical.
 
