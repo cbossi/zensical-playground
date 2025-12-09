@@ -15,6 +15,7 @@ services:
     container_name: zensical_serve
     ports:
       - "8000:8000"
+    # see readme for why we have to use watch instead of a volume mount
     develop:
       watch:
         - action: sync
