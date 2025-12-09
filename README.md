@@ -6,12 +6,12 @@ Provides a dockerized setup to work with zensical.
 
 ### Create
 
-`docker compose run --rm zensical new`
+`docker compose run --build --rm zensical new`
 
 
 ### Start preview mode
 
-* `docker compose up zensical_serve -d`
+* `docker compose up --build zensical_serve -d`
 * `docker compose watch zensical_serve`
 * open http://localhost:8001
 
@@ -21,8 +21,8 @@ Provides a dockerized setup to work with zensical.
 
 ### Build
 
-* with cache: `docker compose run --rm zensical_build`
-* clean build: `docker compose run --rm zensical build --clean`
+* with cache: `docker compose run --build --rm zensical_build`
+* clean build: `docker compose run --build --rm zensical build --clean`
 
 ### Manual cleanup
 
