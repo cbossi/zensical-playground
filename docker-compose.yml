@@ -14,7 +14,7 @@ services:
     image: zensical_serve
     container_name: zensical_serve
     ports:
-      - "8001:8001"
+      - "8000:8000"
     develop:
       watch:
         - action: sync

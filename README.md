@@ -38,17 +38,16 @@ docker image rm zensical_serve
 
 There are two problems with the live preview server (`zensical serve`) when running zensical in a docker container:
 
+### Port is not available on host system
+Problem: Out of the box, the port `8000` of the live server is not available on the host system. 
+
+Solution: This can be changed by starting `zensical serve` with the additional parameter `-p 8000:8000` and adding the following to the Dockerfile: `EXPOSE 8000/tcp`.
+
 ### Live preview does not work with volume mount
 
 Problem: Changes made to the files on the host system are not detected when using a volume mount
 
 Solution: Usage of `docker compose watch` to synchronize changes made on the host to the container. Since the watch can only be invoked after the container has been started, the files have to be copied to the container initially.
-
-### Live preview not available on host system
-
-Problem: When starting the live server without additional param, it cannot be invoked from the host system, since it only listens to `127.0.0.1`. This can be changed by running it with an additional parameter: `zensical serve -a 0.0.0.0:8000`. However, this completely breaks the live reload, also inside the container (most probably a bug in zensical).
-
-Solution: Creating a proxy from port `8000` to port `8001` inside the container by installing `socat` and using it like the following: `socat TCP-LISTEN:8001,fork,reuseaddr TCP:127.0.0.1:8000`. Then the port forwarding from container to host is done on port `8001` instead of `8000` (where `zensical serve` actually listens to).
 
 ### Zensical `build` command does not terminate in combination with volume mount
 
