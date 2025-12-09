@@ -21,7 +21,7 @@ Provides a dockerized setup to work with zensical.
 
 ### Build
 
-* with cache: `docker compose run --rm zensical build`
+* with cache: `docker compose run --rm zensical_build`
 * clean build: `docker compose run --rm zensical build --clean`
 
 ### Manual cleanup
@@ -31,6 +31,7 @@ docker container rm zensical
 docker image rm zensical
 docker container rm zensical_serve
 docker image rm zensical_serve
+ docker image rm zensical_build
 ```
 
 ## About the setup
@@ -48,3 +49,9 @@ Solution: Usage of `docker compose watch` to synchronize changes made on the hos
 Problem: When starting the live server without additional param, it cannot be invoked from the host system, since it only listens to `127.0.0.1`. This can be changed by running it with an additional parameter: `zensical serve -a 0.0.0.0:8000`. However, this completely breaks the live reload, also inside the container (most probably a bug in zensical).
 
 Solution: Creating a proxy from port `8000` to port `8001` inside the container by installing `socat` and using it like the following: `socat TCP-LISTEN:8001,fork,reuseaddr TCP:127.0.0.1:8000`. Then the port forwarding from container to host is done on port `8001` instead of `8000` (where `zensical serve` actually listens to).
+
+### Zensical `build` command does not terminate in combination with volume mount
+
+Problem: The `build` command of zensical does not terminate when used inside a folder mounted to the host. The site artifacts are created, but the command keeps running. (the same behavior is observed with this image, too: https://hub.docker.com/r/joshooaj/zensical)
+
+Solution: The content of the project is copied to a temporary folder not mounted to the host system. The `build` command is then executed in this temporary folder and finally the contentn is copied back to the mounted folder.

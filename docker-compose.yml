@@ -20,3 +20,11 @@ services:
         - action: sync
           path: ./content
           target: /workspace
+
+  zensical_build:
+    build:
+      dockerfile: ./ZensicalBuild.Dockerfile
+    image: zensical_build
+    container_name: zensical_build
+    volumes:
+      - ./content:/workspace
