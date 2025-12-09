@@ -38,13 +38,13 @@ docker image rm zensical_serve
 
 There are two problems with the live preview server (`zensical serve`) when running zensical in a docker container:
 
-## Live preview does not work with volume mount
+### Live preview does not work with volume mount
 
 Problem: Changes made to the files on the host system are not detected when using a volume mount
 
 Solution: Usage of `docker compose watch` to synchronize changes made on the host to the container. Since the watch can only be invoked after the container has been started, the files have to be copied to the container initially.
 
-## Live preview not available on host system
+### Live preview not available on host system
 
 Problem: When starting the live server without additional param, it cannot be invoked from the host system, since it only listens to `127.0.0.1`. This can be changed by running it with an additional parameter: `zensical serve -a 0.0.0.0:8000`. However, this completely breaks the live reload, also inside the container (most probably a bug in zensical).
 
