@@ -10,19 +10,36 @@ Provides a dockerized setup to work with zensical.
 
 
 ### Start preview mode
-
-* `docker compose up --build zensical_serve -d`
-* `docker compose watch zensical_serve`
+* `./serve`
 * open http://localhost:8001
+
+Above command runs:
+```
+docker compose up --build zensical_serve -d
+docker compose watch zensical_serve
+```
 
 ### Stop preview mode
 * Press `Ctrl+C` to stop watch mode
-* `docker compose down zensical_serve --rmi all`
+* `./unserve`
+
+Above command runs:
+```
+docker compose down zensical_serve --rmi all
+```
 
 ### Build
 
-* with cache: `docker compose run --build --rm zensical_build`
-* clean build: `docker compose run --build --rm zensical_build --clean`
+* `./build` or `./build --clean`
+* see build output in [content/site](./content/site) with [index.html](./content/site/index.html) as entry point
+
+Above command runs
+```
+# cached build
+docker compose run --build --rm zensical_build
+# clean build
+docker compose run --build --rm zensical_build --clean
+```
 
 ### Publish to GitHub Pages
 * Go to [Publish Documentation to GitHub Pages](https://github.com/cbossi/zensical-playground/actions/workflows/publish-to-github-pages.yml) workflow under `Actions` tab of repository → *Run workflow*
