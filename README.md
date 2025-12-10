@@ -24,6 +24,14 @@ Provides a dockerized setup to work with zensical.
 * with cache: `docker compose run --build --rm zensical_build`
 * clean build: `docker compose run --build --rm zensical_build --clean`
 
+### Publish to GitHub Pages
+* Go to [Publish Documentation to GitHub Pages](https://github.com/cbossi/zensical-playground/actions/workflows/publish-to-github-pages.yml) workflow under `Actions` tab of repository → *Run workflow*
+* Open published page: https://cbossi.github.io/zensical-playground
+
+#### Initial setup
+Initially, GitHub Pages has to be activated for the current repository: 
+Got to [Pages Settings](https://github.com/cbossi/zensical-playground/settings/pages) of current repository → Under *Source* set *GitHub Actions*. 
+
 ### Manual cleanup
 
 Should not be required, since containers should be removed automatically and the image should be rebuilt when using `--build` parameter as documented above.
