@@ -81,4 +81,4 @@ Solution: Usage of `docker compose watch` to synchronize changes made on the hos
 
 Problem: The `build` command of zensical does not terminate when used inside a folder mounted to the host. The site artifacts are created, but the command keeps running. (the same behavior is observed with this image, too: https://hub.docker.com/r/joshooaj/zensical)
 
-Solution: The content of the project is copied to a temporary folder not mounted to the host system. The `build` command is then executed in this temporary folder and finally the contentn is copied back to the mounted folder.
+Solution: The content of the project is copied to a temporary folder not mounted to the host system. The `build` command is then executed in this temporary folder and finally the content is copied back to the mounted folder.
