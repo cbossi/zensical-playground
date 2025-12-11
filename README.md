@@ -11,7 +11,7 @@ Provides a dockerized setup to work with zensical.
 
 ### Start preview mode
 * `./serve`
-* open http://localhost:8001
+* open http://localhost:8000
 
 Above command runs:
 ```
