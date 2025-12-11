@@ -58,6 +58,8 @@ docker container rm zensical_new
 docker container rm zensical_serve
 docker container rm zensical_build
 docker image rm zensical
+# remove all dangling images (i.e. images without a name)
+docker image prune -f
 ```
 
 ## About the setup
