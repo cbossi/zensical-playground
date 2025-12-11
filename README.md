@@ -75,7 +75,7 @@ Solution: This can be changed by starting `zensical serve` with the additional p
 
 Problem: Changes made to the files on the host system are not detected when using a volume mount
 
-Solution: Usage of `docker compose watch` to synchronize changes made on the host to the container.
+Solution: Usage of `docker compose watch` to synchronize changes made on the host to the container. Since files have to be available initially to start the server, we have to copy them into the image at image build time (see `COPY` statement in [Dockerfile](./Dockerfile))
 
 ### Zensical `build` command does not terminate in combination with volume mount
 
