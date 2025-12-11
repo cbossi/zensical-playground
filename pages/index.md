@@ -4,7 +4,7 @@ icon: lucide/rocket
 
 # Hello World
 
-For full documentation visit [zensical.org](https://zensical.org/docs/).
+If you see this page, zensical works. For full documentation visit [zensical.org](https://zensical.org/docs/).
 
 ## Commands
 
