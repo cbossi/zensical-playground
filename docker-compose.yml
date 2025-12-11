@@ -12,7 +12,8 @@ services:
     build: .
     image: zensical
     container_name: zensical_serve
-    command: [ "zensical", "serve", "-a", "0.0.0.0:8000" ]
+    command: >
+      sh -c "zensical serve -a 0.0.0.0:8000"
     ports:
       - "8000:8000"
     # see readme for why we have to use watch instead of a volume mount
