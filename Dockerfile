@@ -2,9 +2,9 @@ FROM python:3.14.0-alpine3.21
 
 RUN pip install --no-cache-dir zensical
 
-COPY ./content /workspace
+COPY ./ /docs
 
 # see README for why this is necessary
 EXPOSE 8000/tcp
 
-WORKDIR /workspace
+WORKDIR /docs

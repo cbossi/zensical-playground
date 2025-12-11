@@ -31,7 +31,7 @@ docker compose down zensical_serve --rmi all
 ### Build
 
 * `./build` or `./build --clean`
-* see build output in [content/site](./content/site) with [index.html](./content/site/index.html) as entry point
+* see build output in [./site](./site) with [index.html](./site/index.html) as entry point
 
 Above command runs
 ```

@@ -6,7 +6,7 @@ services:
     container_name: zensical_new
     command: [ "zensical", "new" ]
     volumes:
-      - ./content:/workspace
+      - ./:/docs
 
   zensical_serve:
     build: .
@@ -20,8 +20,8 @@ services:
     develop:
       watch:
         - action: sync
-          path: ./content
-          target: /workspace
+          path: ./
+          target: /docs
 
   zensical_build:
     build: .
@@ -30,12 +30,12 @@ services:
     # see README for why the copy action is necessary
     entrypoint: >
       sh -c "
-        cp -r . /workspace-temp &&
-        cd /workspace-temp &&
+        cp -r . /docs-temp &&
+        cd /docs-temp &&
         zensical build &&
-        rm -rf /workspace/site &&
-        cp -r . /workspace &&
-        cd /workspace/site
+        rm -rf /docs/site &&
+        cp -r . /docs &&
+        cd /docs/site
       "
     volumes:
-      - ./content:/workspace
+      - ./:/docs
