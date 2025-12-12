@@ -41,6 +41,28 @@ docker compose run --build --rm zensical_build
 docker compose run --build --rm zensical_build --clean
 ```
 
+### Powershell functions to run commands
+Optionally the following powershell functions can be registered to execute the above commands:
+
+```
+Function zwatch { 
+  docker compose watch zensical_serve
+}
+
+Function zstart { 
+  docker compose up --build zensical_serve -d
+  zwatch
+}
+
+Function zstop { 
+  docker compose down zensical_serve --rmi all
+}
+
+Function zbuild {
+  docker compose run --build --rm zensical_build @args
+}
+```
+
 ### Publish to GitHub Pages
 * Go to [Publish Documentation to GitHub Pages](https://github.com/cbossi/zensical-playground/actions/workflows/publish-to-github-pages.yml) workflow under `Actions` tab of repository → *Run workflow*
 * Open published page: https://cbossi.github.io/zensical-playground
